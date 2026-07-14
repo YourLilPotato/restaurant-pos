@@ -1,11 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
-require_once __DIR__ . '/PaymentGatewayInterface.php';
-require_once __DIR__ . '/PaymentGateways.php';
-require_once __DIR__ . '/Order.php';
-require_once __DIR__ . '/OrderTypes.php';
-require_once __DIR__ . '/CheckoutTerminal.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
+use App\CheckoutTerminal;
+use App\DeliveryOrder;
+use App\DineInOrder;
+use App\TakeawayOrder;
+use App\CardPayment;
+use App\CashPayment;
+use App\MobileBankingPayment;
 
 $terminal = new CheckoutTerminal();
 
