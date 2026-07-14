@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         cacheResultFile=".phpunit.cache/test-results">
+    <testsuites>
+        <testsuite name="Restaurant POS Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage>
+        <include>
+            <file>Order.php</file>
+            <file>OrderTypes.php</file>
+            <file>PaymentGatewayInterface.php</file>
+            <file>PaymentGateways.php</file>
+            <file>ReceiptGenerator.php</file>
+            <file>CheckoutTerminal.php</file>
+        </include>
+    </coverage>
+</phpunit>

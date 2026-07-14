@@ -1,0 +1,28 @@
+{
+    "name": "humaira/restaurant-pos",
+    "description": "A vanilla PHP restaurant POS checkout system demonstrating core OOP principles.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "classmap": ["."],
+        "exclude-from-classmap": ["/tests/"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --testdox",
+        "coverage": "phpunit --coverage-html coverage --coverage-text"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
