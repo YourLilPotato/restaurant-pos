@@ -1,5 +1,10 @@
 <?php
-require_once __DIR__ . '/ReceiptGenerator.php';
+
+declare(strict_types=1);
+
+namespace App;
+
+use InvalidArgumentException;
 
 /**
  * Order (Abstract Base Class)
@@ -11,7 +16,7 @@ require_once __DIR__ . '/ReceiptGenerator.php';
  * Encapsulation:
  *   $items is protected, never exposed directly. External code must go
  *   through addItem()/removeItem() to mutate it, and through the magic
- *   __get() to read derived values like subtotal/tax/itemCount.
+ *   __get() to read derived values like subtotal/taxAmount/itemCount.
  *
  * Static Properties:
  *   TAX_RATE is a class constant shared and applied identically across
@@ -70,7 +75,7 @@ abstract class Order
 
     /**
      * Read-only accessor for the trait / external reporting code.
-     * Still does not allow mutation of the underlying array reference
+     * Still does not allow mutation of the underlying array - reference
      * misuse in a way that bypasses addItem/removeItem business rules,
      * since PHP arrays are copied by value when returned.
      */
@@ -113,7 +118,7 @@ abstract class Order
     }
 
     /**
-     * No __set is implemented on purpose: attempts to do
+     * No __set is implemented "silently": attempts to do
      * $order->subtotal = 500 will NOT overwrite anything because PHP
      * only calls __set() for inaccessible/undeclared properties, and
      * since we never store 'subtotal' as a real property, the write
@@ -125,4 +130,3 @@ abstract class Order
         trigger_error("Cannot overwrite computed property '{$name}'. Use addItem()/removeItem() instead.", E_USER_WARNING);
     }
 }
-
