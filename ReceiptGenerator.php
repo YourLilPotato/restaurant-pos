@@ -1,4 +1,9 @@
 <?php
+
+declare(strict_types=1);
+
+namespace App;
+
 /**
  * ReceiptGenerator (Trait)
  *
@@ -8,11 +13,6 @@
  */
 trait ReceiptGenerator
 {
-    /**
-     * Print a thermal-printer style receipt.
-     * Relies on the consuming class exposing getItems(), and the
-     * magic __get() for subtotal/tax/total style computed fields.
-     */
     public function generatePrintFormat(): string
     {
         $lines = [];
@@ -52,4 +52,3 @@ trait ReceiptGenerator
         return $output;
     }
 }
-
