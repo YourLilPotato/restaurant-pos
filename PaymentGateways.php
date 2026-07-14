@@ -1,6 +1,8 @@
 <?php
-require_once __DIR__ . '/PaymentGatewayInterface.php';
 
+declare(strict_types=1);
+
+namespace App;
 
 class CashPayment implements PaymentGatewayInterface
 {
@@ -36,12 +38,9 @@ class MobileBankingPayment implements PaymentGatewayInterface
         $this->provider = $provider;
     }
 
-    
     public function charge(float $amount): bool
     {
         echo sprintf("[MOBILE BANKING - %s] Sending payment request for BDT %.2f ... Confirmed.\n", $this->provider, $amount);
         return true;
     }
 }
-
-?>
