@@ -1,12 +1,15 @@
 <?php
-require_once __DIR__ . '/Order.php';
+
+declare(strict_types=1);
+
+namespace App;
 
 /**
  * DineInOrder
  *
  * Business rule: 10% service charge on the subtotal, PLUS the universal
- * tax rate defined in Order. Inheritance lets us reuse addItem(),
- * removeItem(), __get(), and the ReceiptGenerator trait for free.
+ * tax rate defined in Order. Inheritance lets us reuse addItem,
+ * removeItem, __get, and the ReceiptGenerator trait for free.
  */
 class DineInOrder extends Order
 {
@@ -14,9 +17,9 @@ class DineInOrder extends Order
 
     public function calculateFinalTotal(): float
     {
-        $subtotal = $this->subtotal;               // via magic __get
+        $subtotal = $this->subtotal; // via magic __get
         $serviceCharge = $subtotal * self::SERVICE_CHARGE_RATE;
-        $tax = $subtotal * static::TAX_RATE;        // universal rate from Order
+        $tax = $subtotal * static::TAX_RATE; // universal rate from Order
 
         return round($subtotal + $serviceCharge + $tax, 2);
     }
@@ -88,4 +91,3 @@ class TakeawayOrder extends Order
     // No extra charge label/amount methods -> ReceiptGenerator trait
     // simply skips that line via method_exists() check.
 }
-
