@@ -1,6 +1,8 @@
 <?php
-require_once __DIR__ . '/Order.php';
-require_once __DIR__ . '/PaymentGatewayInterface.php';
+
+declare(strict_types=1);
+
+namespace App;
 
 /**
  * CheckoutTerminal
@@ -34,4 +36,3 @@ class CheckoutTerminal
         return $success;
     }
 }
-
